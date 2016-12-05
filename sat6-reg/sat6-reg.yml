@@ -1,0 +1,6 @@
+---
+- hosts: all
+  remote_user: root
+  tasks:
+    name: Register to Lab Satellite Server
+    command: "subscription register --org='JMR' --activationkey='rhel7'" 
