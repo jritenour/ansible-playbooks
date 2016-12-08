@@ -1,6 +1,7 @@
 ---
+#This playbook is intended to join a host to a specific satellite 6 server
 - hosts: all
   remote_user: root
   tasks:
-    name: Register to Lab Satellite Server
-    command: "subscription register --org='JMR' --activationkey='rhel7'" 
+    - name: Register to Lab Satellite Server
+      command: "subscription register --org='JMR' --activationkey='rhel7'" 
