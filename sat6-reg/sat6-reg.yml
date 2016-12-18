@@ -5,6 +5,6 @@
   tasks:
     - name: Register to Lab Satellite Server
       redhat_subscription:
-      state: present
-      activationkey: rhel7base
-      org_id: 1
+        state: present
+        activationkey: rhel7base
+        org_id: 1
