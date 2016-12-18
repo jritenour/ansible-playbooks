@@ -7,4 +7,4 @@
       redhat_subscription:
         state: present
         activationkey: rhel7base
-        org_id: 1
+        org_id: JMR
