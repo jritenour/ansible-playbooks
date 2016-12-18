@@ -4,4 +4,7 @@
   remote_user: root
   tasks:
     - name: Register to Lab Satellite Server
-      command: "subscription-manager register --org='JMR' --activationkey='rhel7base'" 
+      redhat_subscription:
+      state: present
+      activationkey: rhel7base
+      org_id: 1
