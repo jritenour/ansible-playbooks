@@ -4,5 +4,5 @@
   tasks:
     - name: Yum update all
       yum: 
-        name: '*'
+        name: '{{ package }}'
         state: latest  
