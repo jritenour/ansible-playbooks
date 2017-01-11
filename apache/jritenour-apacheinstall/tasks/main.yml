@@ -18,3 +18,14 @@
       service: http
       permanent: true
       state: enabled
+  
+  - name: restart firewalld
+    service:
+      name: firewalld
+      state: restarted
+
+  - name: start and enable apache
+    service:
+      name: apache
+      state: started
+      enabled: yes
