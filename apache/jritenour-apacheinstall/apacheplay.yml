@@ -1,0 +1,5 @@
+---
+- hosts: all
+  roles: 
+    - {role: redhat, when: ansible_os_family == "RedHat"}
+    - {role: debian, when: ansible_os_family == "Debian"}

@@ -1,0 +1,20 @@
+---
+# tasks file for jritenour-apacheinstall
+  - name: Install Apache
+    yum: 
+      name: httpd
+      state: latest
+    
+  - name: Setup basic index file
+    copy: 
+      content: "This is the index of '{{ ansible_hostname }}'."
+      dest: /var/www/html/index.htm
+      owner: apache
+      group: apache
+      mode: 0644
+  
+  - name: Allow HTTP through firewall
+    firewalld:
+      service: http
+      permanent: true
+      state: enabled
