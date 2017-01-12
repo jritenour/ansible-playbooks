@@ -5,7 +5,7 @@
     lineinfile: dest={{ sshd_config }} regexp="^#?PasswordAuthentication" line="PasswordAuthentication no"
     notify: restart sshd
   handlers:
-  - name: restart sshd
-    serivce:
-      name: sshd
-      state: restarted
+    - name: restart sshd
+      service:
+        name: sshd
+        state: restarted
