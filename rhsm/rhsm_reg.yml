@@ -1,0 +1,11 @@
+---
+- hosts: all
+  tasks:
+    - name: Register with Red Hat Subscription Manager 
+      command: subscription-manager register --username={{ rhn_user }} --password={{ rhn_pass }} --consumerid={{ rhn_uuid }}
+    - name: Attach subscription 
+      command: subscription-manager attach --pool="{{ rhn_pool }}"
+    - name: Disable all repos
+      command: subscription-manager repos --disable "*"
+    - name: Enable necessary repos
+      command: subscription-manager repos --enable {{ rhel_server_repo }} 
