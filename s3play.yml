@@ -1,0 +1,14 @@
+---
+- hosts: localhost
+  remote_user: root
+  tasks:
+    - name: convert VM
+      shell: 'ovftool --noSSLVerify vi://root:Thebus36@192.168.2.5/rhel6mig ~/migration.ova'
+    - name: upload test
+      s3:
+        aws_access_key: '{{ aws_access_key }}'
+        aws_secret_key: '{{ aws_secret_key }}'
+        bucket: jr-imageupload
+        object: images/testimage.ova
+        src: /root/migration.ova
+        mode: put
