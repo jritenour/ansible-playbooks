@@ -1,8 +1,8 @@
 ---
 - hosts: all
-  remote_user: root
+  become: true
   tasks:
-    - name: Yum update all
+    - name: Install Packages
       yum: 
         name: '{{ packages }}'
         state: latest  
