@@ -3,7 +3,7 @@
   remote_user: root
   tasks:
     - name: convert VM
-      shell: 'ovftool --noSSLVerify vi://root:'{{ password }}'@192.168.2.5/rhel6test ~/migration.ova'
+      shell: 'ovftool --noSSLVerify vi://root:'{{ password }}'@192.168.2.5/rhel6test /root/migration.ova'
     - name: upload test
       s3:
         aws_access_key: '{{ aws_access_key }}'
