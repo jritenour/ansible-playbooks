@@ -23,9 +23,9 @@
    
     - name: Set Sat 6 server as puppet master
       lineinfile:
-      path: /etc/puppet/puppet.conf
-      state=present
-      line: 'server= "{{ sat6_server }}"'
+        path: /etc/puppet/puppet.conf
+        state=present
+        line: 'server= "{{ sat6_server }}"'
      
     - name: Start and enable katello-agent and puppet
       service:
