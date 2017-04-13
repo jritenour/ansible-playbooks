@@ -1,10 +1,33 @@
 ---
 #This playbook is intended to join a host to a specific satellite 6 server
 - hosts: all
-  remote_user: root
   tasks:
+    - name: Install the RSHM config from {{ sat6_server }}
+      command:  "/usr/bin/yum -y localinstall http://{{ sat6_server }}/pub/katello-ca-consumer-latest.noarch.rpm"
+
     - name: Register to Lab Satellite Server
       redhat_subscription:
         state: present
         activationkey: '{{ activation_key }}'
         org_id: '{{ org_id }}'
+      register: 'reg_return'
+
+    - name: Install katello-agent & puppet
+      yum:
+        name: '{{ item }}'
+        state: latest
+      with_items:
+        - katello-agent
+        - puppet 
+      when: reg_return|success
+     
+    - name: Start and enable katello-agent and puppet
+      service:
+        name: '{{ item }} '
+        state: started
+        enabled: yes
+      with_items:
+        - goferd
+        - puppet
+      when: reg_return|success
+    
