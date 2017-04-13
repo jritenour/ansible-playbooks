@@ -3,7 +3,7 @@
 - hosts: all
   tasks:
     - name: Install the RSHM config from {{ sat6_server }}
-      command:  "/usr/bin/yum -y localinstall https://{{ sat6_server }}/pub/katello-ca-consumer-latest.noarch.rpm"
+      command:  "/usr/bin/yum -y localinstall http://{{ sat6_server }}/pub/katello-ca-consumer-latest.noarch.rpm"
 
     - name: Register to Lab Satellite Server
       redhat_subscription:
