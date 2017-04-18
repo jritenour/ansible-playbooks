@@ -1,0 +1,21 @@
+---
+- hosts: all
+  tasks:
+  - name: Install MariaDB packages
+    yum: 
+      name: '{{ item }}'
+      state: present
+    with_items:
+    - mariadb-server
+    - mariadb
+
+  - name: Start & enable service
+    service:   
+      name: mariadb
+      state: started
+      enabled: yes
+
+  - name: Create simple DB
+    mysql_db: 
+      name: empty_db
+      state: present
