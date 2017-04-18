@@ -9,4 +9,4 @@
         state: latest
 
     - name: join ipa domain
-      command: ipa-client-install --server='{{ ipa_server }}' --domain='{{ domain }}' --principal='{{ ipa_user }}' --password='{{ ipa_password }}' --unattended
+      command: ipa-client-install --server='{{ ipa_server }}' --domain='{{ domain }}' --principal='{{ ipa_user }}' --password='{{ ipa_password }}' --enable-dns-updates --unattended
