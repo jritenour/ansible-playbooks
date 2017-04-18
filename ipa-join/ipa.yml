@@ -1,7 +1,6 @@
 ---
 #This a playbook designed to install the IPA/IdM client on RHEL/Centos, and join an IPA realm using extra variables via power or the '-e' flag from the CLI
 - hosts: all
-  remote_user: root
   tasks:
     - name: install ipa client
       yum:
