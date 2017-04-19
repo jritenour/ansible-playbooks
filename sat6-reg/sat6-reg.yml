@@ -11,23 +11,3 @@
         activationkey: '{{ activation_key }}'
         org_id: '{{ org_id }}'
       register: 'reg_return'
-
-    - name: Install katello-agent & puppet
-      yum:
-        name: '{{ item }}'
-        state: latest
-      with_items:
-        - katello-agent
-        - puppet 
-      when: reg_return|success
-     
-    - name: Start and enable katello-agent and puppet
-      service:
-        name: '{{ item }} '
-        state: started
-        enabled: yes
-      with_items:
-        - goferd
-        - puppet
-      when: reg_return|success
-    
