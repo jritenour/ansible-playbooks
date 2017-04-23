@@ -4,6 +4,7 @@
   tasks:
     - name: Install the RSHM config from {{ sat6_server }}
       command:  "/usr/bin/yum -y localinstall http://{{ sat6_server }}/pub/katello-ca-consumer-latest.noarch.rpm"
+      when: (ansible_distribution == "RedHat")
 
     - name: Register to Lab Satellite Server
       redhat_subscription:
@@ -11,3 +12,4 @@
         activationkey: '{{ activation_key }}'
         org_id: '{{ org_id }}'
       register: 'reg_return'
+      when: (ansible_distribution == "RedHat")
