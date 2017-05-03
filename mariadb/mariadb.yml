@@ -18,5 +18,5 @@
 
   - name: Create simple DB
     mysql_db: 
-      name: empty_db
+      name: '{{ database }}'
       state: present
