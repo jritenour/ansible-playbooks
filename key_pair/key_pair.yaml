@@ -1,6 +1,12 @@
 ---
 - hosts: all
   tasks: 
+  - name: create user
+    user: 
+      name: '{{ user }}' 
+      state: present
+      groups: wheel
+      append: yes
   - name: Copy SSH Key
     authorized_key:
       user: '{{ user }}'
