@@ -1,0 +1,4 @@
+---
+- include: ssh/sshplay.yml
+- include: key_pair/key_pair.yml
+- include: update/update.yml
