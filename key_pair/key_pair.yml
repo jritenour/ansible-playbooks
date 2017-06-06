@@ -5,6 +5,7 @@
     user: 
       name: '{{ user }}' 
       state: present
+      uid: '{{ uid }}'
       groups: wheel
       append: yes
   - name: Copy SSH Key
