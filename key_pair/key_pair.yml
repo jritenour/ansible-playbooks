@@ -12,4 +12,4 @@
     authorized_key:
       user: '{{ user }}'
       state: present
-      key: '{{ key_url }}'
+      key: '{{ key }}'
