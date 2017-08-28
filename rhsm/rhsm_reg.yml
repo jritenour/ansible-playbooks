@@ -2,7 +2,7 @@
 - hosts: all
   tasks:
     - name: Register with Red Hat Subscription Manager 
-      command: subscription-manager register --username={{ rhn_user }} --password={{ rhn_pass }}
+      command: subscription-manager register --username={{ rhn_user }} --password={{ rhn_pass }} --force
     - name: Attach subscription 
       command: subscription-manager attach --pool="{{ rhn_pool }}"
     - name: Disable all repos
