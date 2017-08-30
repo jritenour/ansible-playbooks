@@ -1,0 +1,12 @@
+---
+- hosts: all
+  tasks:
+  - name: install IPA packages
+    yum: 
+      name: '{{ item }}'
+      state: latest
+    with_items:
+    - ipa-server
+    - ipa-server-dns
+  - name: Setup IPA Server 
+    command: ipa-server-install -U -r '{{ realm }}' -d '{{ domain }}' -p '{{ dm_pass }}' -a '{{ admin_pass }}' --setup-dns --forwarder '{{ forward_ip }}'
