@@ -1,0 +1,8 @@
+---
+- tasks:
+  - name: Install RH Ingsights RPM  
+    yum: 
+      name: redhat-access-insights
+      state: present
+  - name: register RH insights
+    command: "redhat-access-insights --register"     
