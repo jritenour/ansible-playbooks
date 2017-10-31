@@ -1,6 +1,6 @@
 ---
 - hosts: all
-- tasks:
+  tasks:
   - name: Install RH Ingsights RPM  
     yum: 
       name: redhat-access-insights
