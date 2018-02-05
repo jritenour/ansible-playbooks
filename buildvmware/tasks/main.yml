@@ -1,0 +1,69 @@
+---
+# tasks file for jritenour.vmware-cf-miq
+
+  - name: Generate  UUID
+    shell: openssl rand -hex 2
+    register: uuid_list
+    with_sequence: start=1 end="{{ count }}"
+  - name: create the VM
+    vmware_guest:
+      hostname: "{{ vcenter_ip }}"
+      username: "{{ vcenter_user }}"
+      password: "{{ vcenter_pass }}"
+      validate_certs: no
+      esxi_hostname: "{{ esx_host }}"
+      datacenter: "{{ vc_datacenter }}"
+      name: "{{ vm_name }}-{{ item.stdout }}"
+      state: poweredon
+      disk:
+      - size_gb: 60
+        type: thin
+        datastore: "{{ vc_datastore }}"
+      - size_gb: "{{ db_size }}"
+        type: thin
+        datastore: "{{ vc_datastore }}"
+      hardware:
+        memory_mb: 16384
+        num_cpus: 2
+      template: "{{ template_name }}"
+      networks:
+      - name: VM Network
+        dns_servers:
+        - "{{ dns1 }}"
+        type: dhcp
+      customization:
+        dns_servers:
+        - "{{ dns1 }}"
+        runonce: 
+        - hostnamectl set-hostname "{{ vm_name }}"-"{{ item.stdout }}"."{{ domain }}"
+      wait_for_ip_address: yes
+    delegate_to: localhost
+    register: deploy
+    with_items: "{{ uuid_list.results }}"
+
+  - name: Debugging instance info
+    debug: var=deploy.results[0]
+
+  - name: add master server to inventory
+    add_host:
+      hostname: "{{ deploy.results.instance.hw_eth0.ipaddresses[0] }}"
+      ansible_ssh_user: root
+      ansible_ssh_pass: "{{ cf_ssh_pass }}"
+      groupname: master
+    when: master
+
+  - name: add infra nodes to inventory
+    add_host:
+      hostname: "{{ deploy.results.instance.hw_eth0.ipaddresses[0] }}"
+      ansible_ssh_user: root
+      ansible_ssh_pass: "{{ cf_ssh_pass }}"
+      groupname: node
+    when: infra
+
+  - name: add nodes to inventory
+    add_host:
+      hostname: "{{ deploy.results.instance.hw_eth0.ipaddresses[0] }}"
+      ansible_ssh_user: root
+      ansible_ssh_pass: "{{ cf_ssh_pass }}"
+      groupname: node
+    when: node

@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: no
+  remote_user: root
+  vars_files:
+    - '../main.yml'
+  vars:
+    count: 1
+  roles:
+    - {role: 'buildvmware'}

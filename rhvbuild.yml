@@ -1,0 +1,14 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: no
+  roles:
+    - {role: 'buildrhv'}
+  tasks:
+  - name: Wait for CloudForms services to come up
+    wait_for:
+      host: "{{ ipaddr }}"
+      port: "22"
+      delay: "30"
+      timeout: "300"
+      state: "started"
