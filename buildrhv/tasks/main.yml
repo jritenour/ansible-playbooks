@@ -19,11 +19,3 @@
        - name: eth0
          profile_name: "{{ network_name }}"
          inferface: virtio 
-     cloud_init:
-       nic_boot_protocol: static
-       nic_ip_address: "{{ ipaddr }}"
-       nic_netmask: "{{ netmask }}"
-       nic_gateway: "{{ gateway }}"
-       nic_name: eth0
-       nic_on_boot: true 
-       dns_servers: "{{ dns }}"
