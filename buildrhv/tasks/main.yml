@@ -19,3 +19,11 @@
        - name: eth0
          profile_name: "{{ network_name }}"
          inferface: virtio 
+
+ - name: Tag VM as 'provsioning'
+   ovirt_tags:
+     auth: "{{ ovirt_auth }}"
+     name: provisioning
+     state: attached
+     vms: 
+       - "{{ vm_name }}"
