@@ -5,7 +5,7 @@
   roles:
     - {role: 'buildrhv'}
   tasks:
-  - name: Wait for CloudForms services to come up
+  - name: Wait for VM to become responsive
     wait_for:
       host: "{{ ipaddr }}"
       port: "22"
