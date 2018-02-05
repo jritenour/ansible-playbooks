@@ -4,11 +4,3 @@
   gather_facts: no
   roles:
     - {role: 'buildrhv'}
-  tasks:
-  - name: Wait for VM to become responsive
-    wait_for:
-      host: "{{ ipaddr }}"
-      port: "22"
-      delay: "30"
-      timeout: "300"
-      state: "started"
