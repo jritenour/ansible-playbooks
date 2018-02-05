@@ -27,3 +27,7 @@
      state: attached
      vms: 
        - "{{ vm_name }}"
+
+ - name: Wait for IP
+   pause: 
+     seconds: 30
