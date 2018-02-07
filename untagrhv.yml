@@ -1,5 +1,6 @@
 ---
-- hosts: all
+- hosts: localhost
+  connection: local
   tasks:
     - name: Authenticate to RHV-M
       ovirt_auth:
@@ -8,7 +9,7 @@
         password: "{{ rhv_pass }}"
         insecure: true
 
-    - name: Tag VM as 'provsioning'
+    - name: Untag VM as 'provsioning'
       ovirt_tags:
         auth: "{{ ovirt_auth }}"
         name: provisioning
