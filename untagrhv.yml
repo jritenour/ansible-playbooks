@@ -1,0 +1,17 @@
+---
+- hosts: all
+  tasks:
+    - name: Authenticate to RHV-M
+      ovirt_auth:
+        url: "https://{{ rhvm_addr }}/ovirt-engine/api"
+        username: "{{ rhv_user }}"
+        password: "{{ rhv_pass }}"
+        insecure: true
+
+    - name: Tag VM as 'provsioning'
+      ovirt_tags:
+        auth: "{{ ovirt_auth }}"
+        name: provisioning
+        state: attached
+        vms:
+          - "{{ vm_name }}"
