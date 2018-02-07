@@ -13,6 +13,6 @@
       ovirt_tags:
         auth: "{{ ovirt_auth }}"
         name: provisioning
-        state: attached
+        state: detached
         vms:
           - "{{ vm_name }}"
