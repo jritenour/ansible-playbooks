@@ -2,7 +2,7 @@
 - hosts: all
   tasks:
     - name: Register with Red Hat Subscription Manager 
-      redhat_subscription
+      redhat_subscription:
         state: present
         username: "{{ rhn_user }}"
         password: "{{ rhn_pass }}"
