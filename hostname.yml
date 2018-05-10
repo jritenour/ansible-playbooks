@@ -1,5 +1,13 @@
 ---
 - hosts: all
   tasks:
-    - hostname:
-        name: "{{ vm_name }}"
+  - name: Set hostname
+    hostname:
+      name: "{{ vm_name }}"
+  - name: point to local DNS server
+    lineinfile:
+      path: /etc/resolv.conf
+      regexp: '^nameserver'
+      line: "nameserver {{ dns1 }}" 
+    tags:
+      - dns
