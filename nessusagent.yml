@@ -1,6 +1,0 @@
----
-- hosts: all
-  roles:
-    - role: singleplatform-eng.nessus-agent
-      nessus_agent_key: 
-      tags: nessus-agent
