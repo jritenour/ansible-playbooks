@@ -15,6 +15,7 @@
       datacenter: "{{ vc_datacenter }}"
       name: "{{ vm_name }}-{{ item.stdout }}"
       state: poweredon
+      folder: /
       disk:
       - size_gb: 60
         type: thin
