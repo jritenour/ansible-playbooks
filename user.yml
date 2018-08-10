@@ -1,0 +1,2 @@
+---
+- import_playbook: roles/key_pair/key_pair.yml
