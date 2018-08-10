@@ -3,9 +3,9 @@
   tasks: 
   - name: Disable password login
     lineinfile: dest="/etc/ssh/sshd_config" regexp="^#?PermitRootLogin" line="PermitRootLogin no"
-#    notify: restart sshd
-#  handlers:
-#    - name: restart sshd
-#      service:
-#        name: sshd
-#        state: restarted
+    notify: restart sshd
+  handlers:
+    - name: restart sshd
+      service:
+        name: sshd
+        state: restarted
