@@ -1,2 +1,2 @@
 ---
-- import_playbook: roles/key_pair/key_pair.yml
+- include: roles/key_pair/key_pair.yml

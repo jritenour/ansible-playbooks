@@ -1,3 +1,3 @@
 ---
-- import_playbook: roles/ssh/sshplay.yml
+- include: roles/ssh/sshplay.yml
 
