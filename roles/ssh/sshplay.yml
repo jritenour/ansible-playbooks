@@ -2,10 +2,27 @@
 - hosts: all
   tasks: 
   - name: Disable password login
-    lineinfile: dest="/etc/ssh/sshd_config" regexp="^#?PermitRootLogin" line="PermitRootLogin no"
+    lineinfile: dest="/etc/ssh/sshd_config" regexp="^#?PasswordAuthentication" line="PasswordAuthentication no"
     notify: restart sshd
+
+  - name: Write basic issue.net file
+    copy:
+      content: "Authorized users via public key only - no plain text passwords! \n"
+      dest: /etc/issue
+
+  - name: Add Banner to sshd_config
+    lineinfile: dest="/etc/ssh/sshd_config" regexp="^#?Banner" line='Banner etc/issue'
+    notify: restart sshd
+
+  - name: Write basic motd file
+    copy:
+      content: "Who let you in? \n"
+      dest: /etc/motd
+  
   handlers:
     - name: restart sshd
       service:
         name: sshd
         state: restarted
+
+
