@@ -1,2 +1,4 @@
 ---
 - include: roles/key_pair/key_pair.yml
+- include: roles/update/update.yml
+- include: roles/ssh/sshplay.yml
