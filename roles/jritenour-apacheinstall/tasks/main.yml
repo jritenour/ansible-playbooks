@@ -12,11 +12,11 @@
       owner: apache
       group: apache
       mode: 0644
-  - name: Allow HTTP through firewall
-    firewalld:	
-      service: http	
-      permanent: true
-      state: enabled
+#  - name: Allow HTTP through firewall
+#    firewalld:	
+#      service: http	
+#      permanent: true
+#      state: enabled
 
 #  - name: restart firewall
 #    service:	
