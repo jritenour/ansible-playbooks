@@ -17,10 +17,7 @@
       state: poweredon
       folder: /
       disk:
-      - size_gb: 60
-        type: thin
-        datastore: "{{ vc_datastore }}"
-      - size_gb: "{{ db_size }}"
+      - size_gb: 10
         type: thin
         datastore: "{{ vc_datastore }}"
       hardware:
