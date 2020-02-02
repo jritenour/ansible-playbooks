@@ -7,7 +7,7 @@
 
   - name: Setup basic index file
     copy:
-      content: "<h1>This is the index of '{{ ansible_hostname }}'.</h1>"
+      content: "<h1>This is not the index of '{{ ansible_hostname }}'.</h1>"
       dest: /var/www/html/index.html
       owner: apache
       group: apache
