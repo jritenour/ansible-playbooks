@@ -7,7 +7,7 @@
 
   - name: Setup basic index file
     copy:
-      content: "<h1>'{{ run_msg }}'.</h1>"
+      content: "<h1>'{{ ansible_hostname }}'.</h1>"
       dest: /var/www/html/index.html
       owner: apache
       group: apache
